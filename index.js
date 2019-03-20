@@ -47,7 +47,16 @@ class ComposantTwo extends Component {
     console.log(this.state.heure+"//"+this.state.minutes)
     let minutes = (this.state.minutes == null)? 0 : this.state.minutes;
     let heures = (this.state.heure == null)? 0 : this.state.heure;
-    this.setState({nombre: heures+","+minutes});
+    let result = (minutes*100)/60;
+    let resultString = ",";
+    if(result.toString().indexOf('.') != -1){
+      
+      resultString += result.toString().substring(0,result.toString().indexOf('.'))
+
+    }else{
+      resultString+=result;
+    }
+    this.setState({nombre: heures+resultString});
   }
   render() {
     return (
